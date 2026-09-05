@@ -1,0 +1,1212 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#05080a">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>KYRO</title>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Firebase Web SDK -->
+<script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-app-check-compat.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- ============ ICON SPRITE ============ -->
+<svg style="display:none">
+<symbol id="i-menu" viewBox="0 0 24 24"><line x1="4" y1="8" x2="20" y2="8"/><line x1="4" y1="16" x2="20" y2="16"/></symbol>
+<symbol id="i-x" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></symbol>
+<symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></symbol>
+<symbol id="i-plus" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></symbol>
+<symbol id="i-send" viewBox="0 0 24 24"><path d="M12 19V5"/><path d="M5 12l7-7 7 7"/></symbol>
+<symbol id="i-mic" viewBox="0 0 24 24"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></symbol>
+<symbol id="i-camera" viewBox="0 0 24 24"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></symbol>
+<symbol id="i-image" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></symbol>
+<symbol id="i-paperclip" viewBox="0 0 24 24"><path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"/></symbol>
+<symbol id="i-file" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></symbol>
+<symbol id="i-scan" viewBox="0 0 24 24"><path d="M3 7V5a2 2 0 0 1 2-2h2"/><path d="M17 3h2a2 2 0 0 1 2 2v2"/><path d="M21 17v2a2 2 0 0 1-2 2h-2"/><path d="M7 21H5a2 2 0 0 1-2-2v-2"/></symbol>
+<symbol id="i-sliders" viewBox="0 0 24 24"><line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/><line x1="1" y1="14" x2="7" y2="14"/><line x1="9" y1="8" x2="15" y2="8"/><line x1="17" y1="16" x2="23" y2="16"/></symbol>
+<symbol id="i-help" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></symbol>
+<symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></symbol>
+<symbol id="i-logout" viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></symbol>
+<symbol id="i-chevdown" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></symbol>
+<symbol id="i-chevright" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></symbol>
+<symbol id="i-chevleft" viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></symbol>
+<symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></symbol>
+<symbol id="i-moon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></symbol>
+<symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></symbol>
+<symbol id="i-copy" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></symbol>
+<symbol id="i-pin" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></symbol>
+<symbol id="i-trash" viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6"/><path d="M14 11v6"/><path d="M9 6V4a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2"/></symbol>
+<symbol id="i-more" viewBox="0 0 24 24"><circle cx="12" cy="5" r="1.8" fill="currentColor" stroke="none"/><circle cx="12" cy="12" r="1.8" fill="currentColor" stroke="none"/><circle cx="12" cy="19" r="1.8" fill="currentColor" stroke="none"/></symbol><symbol id="i-share" viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></symbol>
+<symbol id="i-refresh" viewBox="0 0 24 24"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></symbol>
+<symbol id="i-stop" viewBox="0 0 24 24"><rect x="5" y="5" width="14" height="14" rx="2"/></symbol>
+<symbol id="i-check" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></symbol>
+<symbol id="i-eye" viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></symbol>
+<symbol id="i-eyeoff" viewBox="0 0 24 24"><path d="M17.94 17.94A10.94 10.94 0 0 1 12 20c-7 0-11-8-11-8a18.5 18.5 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19"/><line x1="1" y1="1" x2="23" y2="23"/></symbol>
+<symbol id="i-user" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></symbol>
+<symbol id="i-lock" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></symbol>
+<symbol id="i-instagram" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5.5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></symbol>
+<symbol id="i-edit" viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4z"/></symbol>
+<symbol id="i-alert" viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></symbol>
+<symbol id="i-volume" viewBox="0 0 24 24"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/></symbol>
+<symbol id="i-kebab" viewBox="0 0 24 24"><circle cx="12" cy="5" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="12" cy="19" r="1.6"/></symbol>
+<symbol id="i-box" viewBox="0 0 24 24"><path d="M12.89 1.45l8 4A2 2 0 0 1 22 7.24v9.53a2 2 0 0 1-1.11 1.79l-8 4a2 2 0 0 1-1.79 0l-8-4a2 2 0 0 1-1.1-1.8V7.24a2 2 0 0 1 1.11-1.79l8-4a2 2 0 0 1 1.78 0z"/><polyline points="2.32 6.16 12 11 21.68 6.16"/><line x1="12" y1="22.76" x2="12" y2="11"/></symbol>
+<symbol id="i-folder" viewBox="0 0 24 24"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></symbol>
+<symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></symbol>
+<symbol id="i-star" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></symbol>
+<symbol id="i-xcircle" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></symbol>
+<symbol id="i-key" viewBox="0 0 24 24"><circle cx="8" cy="15" r="4"/><path d="M10.6 12.4L20 3"/><path d="M16.5 6.5l3 3"/><path d="M13.5 9.5l2 2"/></symbol>
+<symbol id="i-download" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></symbol>
+<symbol id="i-chat" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></symbol>
+<symbol id="i-home" viewBox="0 0 24 24"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/><path d="M9 21v-7h6v7"/></symbol>
+<symbol id="i-archive" viewBox="0 0 24 24"><path d="M3 7h18v14H3z"/><path d="M2 3h20v4H2z"/><path d="M9 11h6"/></symbol>
+<symbol id="i-dollar" viewBox="0 0 24 24"><path d="M12 2v20M16.5 6.5c-1-1-2.2-1.5-4.2-1.5-2.6 0-4.3 1.2-4.3 3.2 0 2.2 1.9 3 4.6 3.7 2.7.7 4.4 1.5 4.4 3.7 0 2.1-1.9 3.5-4.7 3.5-2.1 0-3.8-.7-4.8-2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol><symbol id="i-book" viewBox="0 0 24 24"><path d="M5 4h12a2 2 0 0 1 2 2v14H7a2 2 0 0 1-2-2V4Z M7 20h12 M8 7h7 M8 11h7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol><symbol id="i-graduation" viewBox="0 0 24 24"><path d="m3 9 9-5 9 5-9 5-9-5Z M7 11v5c2.8 2 7.2 2 10 0v-5 M21 9v6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol><symbol id="i-pen" viewBox="0 0 24 24"><path d="m4 20 4.5-1 10-10a2.8 2.8 0 0 0-4-4l-10 10L4 20Z M13.5 6.5l4 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol><symbol id="i-pencil" viewBox="0 0 24 24"><path d="m4 20 4.5-1 10.5-10.5a2.8 2.8 0 0 0-4-4L4.5 15 4 20Z M14 6l4 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol><symbol id="i-code" viewBox="0 0 24 24"><path d="m8 6-6 6 6 6M16 6l6 6-6 6M14 3l-4 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol><symbol id="i-terminal" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="m7 9 3 3-3 3M12 15h5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol><symbol id="i-music" viewBox="0 0 24 24"><path d="M9 18V5l10-2v13M9 18c0 2-1.8 3-4 3s-4-1-4-3 1.8-3 4-3 4 1 4 3ZM19 16c0 2-1.8 3-4 3s-4-1-4-3 1.8-3 4-3 4 1 4 3Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol><symbol id="i-gift" viewBox="0 0 24 24"><path d="M4 10h16v10H4zM3 7h18v3H3zM12 7v13M12 7H8.5C6 7 5.5 3.5 8 3.5c2.3 0 4 3.5 4 3.5ZM12 7h3.5c2.5 0 3-3.5.5-3.5-2.3 0-4 3.5-4 3.5Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol><symbol id="i-palette" viewBox="0 0 24 24"><path d="M12 3a9 9 0 0 0 0 18h2.2c1.5 0 2.3-1.8 1.2-2.9-.9-.9-.2-2.5 1.1-2.5H18a3 3 0 0 0 3-3C21 7.2 17 3 12 3Z" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="7" cy="10" r="1" fill="currentColor"/><circle cx="10" cy="7" r="1" fill="currentColor"/><circle cx="14" cy="7" r="1" fill="currentColor"/><circle cx="17" cy="10" r="1" fill="currentColor"/></symbol><symbol id="i-stethoscope" viewBox="0 0 24 24"><path d="M6 3v6a4 4 0 0 0 8 0V3M4 3h4M12 3h4M10 13v2a5 5 0 0 0 10 0v-2M20 10a2 2 0 1 0 0 4 2 2 0 0 0 0-4Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol><symbol id="i-bag" viewBox="0 0 24 24"><path d="M4 8h16l1 12H3L4 8ZM8 8V6a4 4 0 0 1 8 0v2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol><symbol id="i-chart" viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol><symbol id="i-dumbbell" viewBox="0 0 24 24"><path d="M3 9v6M6 7v10M9 10h6M15 7v10M18 9v6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol><symbol id="i-note" viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M8 8h8M8 12h8M8 16h5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol><symbol id="i-scale" viewBox="0 0 24 24"><path d="M12 4v16M6 4h12M5 20h14M4 8h5l-2.5 5A2.5 2.5 0 0 1 4 11.5 2.5 2.5 0 0 1 4 11l-1-3ZM15 8h5l-2.5 5a2.5 2.5 0 0 1-2.5-1.5 2.5 2.5 0 0 1 0-1L15 8Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol><symbol id="i-plane" viewBox="0 0 24 24"><path d="m3 11 18-7-7 18-3-8-8-3Z M11 14l4-4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol><symbol id="i-wrench" viewBox="0 0 24 24"><path d="M14 6a5 5 0 0 0-6 6L3 17a2 2 0 0 0 3 3l5-5a5 5 0 0 0 6-6l-3 3-3-3 3-3Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol><symbol id="i-paw" viewBox="0 0 24 24"><path d="M12 13c-3.5 0-6 2.2-6 5 0 2 1.4 3 3.2 3 1.2 0 1.9-.7 2.8-.7s1.6.7 2.8.7c1.8 0 3.2-1 3.2-3 0-2.8-2.5-5-6-5ZM6 10c-1.5 1-3 .2-3.4-1.3C2.2 7.2 3.1 5.6 4.6 5.4 6.1 5.2 7.2 6.5 7 8c-.1.9-.5 1.6-1 2ZM18 10c1.5 1 3 .2 3.4-1.3.4-1.5-.5-3.1-2-3.3-1.5-.2-2.6 1.1-2.4 2.6.1.9.5 1.6 1 2ZM9 7c-1.3.3-2.5-.7-2.6-2.1C6.3 3.5 7.2 2.3 8.6 2.2 10 2.1 11 3.4 10.8 4.8 10.6 5.9 10 6.7 9 7ZM15 7c1.3.3 2.5-.7 2.6-2.1.1-1.4-.8-2.6-2.2-2.7-1.4-.1-2.4 1.2-2.2 2.6.2 1.1.8 1.9 1.8 2.2Z" fill="none" stroke="currentColor" stroke-width="1.5"/></symbol><symbol id="i-flask" viewBox="0 0 24 24"><path d="M9 3h6M10 3v6l-5 9a2 2 0 0 0 1.8 3h10.4A2 2 0 0 0 19 18l-5-9V3M7 15h10" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol><symbol id="i-brain" viewBox="0 0 24 24"><path d="M9 5a3 3 0 0 0-5 2 3 3 0 0 0 1 5 3 3 0 0 0 1 6 3 3 0 0 0 5 1V5ZM15 5a3 3 0 0 1 5 2 3 3 0 0 1-1 5 3 3 0 0 1-1 6 3 3 0 0 1-5 1V5ZM9 9h6M9 13h6M9 17h6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol></svg>
+
+<!-- ============ AMBIENT BACKGROUND ============ -->
+<div id="bg-fx">
+  <div class="blob blob-a"></div>
+  <div class="blob blob-b"></div>
+  <div class="blob blob-c"></div>
+  <canvas id="bg-canvas"></canvas>
+  <div class="bg-grain"></div>
+</div>
+
+<!-- ============ SPLASH ============ -->
+<div id="splash">
+  <div class="logo-wrap">
+    <div class="logo-glow"></div>
+    <div class="logo-mark"></div>
+  </div>
+  <div>
+    <div class="splash-word kyro-word">KYR<span class="kyro-o">O</span></div>
+  </div>
+  <div class="splash-tag">Powered by Synapse</div>
+  <div class="splash-bar"></div>
+</div>
+
+<!-- ============ ONBOARD ============ -->
+<!-- Legacy onboarding is intentionally disabled; authentication now starts here. -->
+
+<!-- ============ FIREBASE GOOGLE LOGIN ============ -->
+<div id="firebase-auth-gate">
+  <div class="auth-card">
+    <div class="auth-logo" aria-label="KYRO animated logo"><div class="logo-mark"></div></div>
+    <h1 id="kyro-auth-title">Welcome to <span class="kyro-word">KYR<span class="kyro-o">O</span></span></h1>
+    <p id="kyro-auth-subtitle">Sign in to continue</p>
+
+    <div class="auth-form">
+      <div class="auth-field">
+        <svg class="icon"><use href="#i-user"/></svg>
+        <input id="kyro-login-username" name="kyro_user_field_v8" type="text" placeholder="Username" autocomplete="off" autocapitalize="none" spellcheck="false" maxlength="32" inputmode="text">
+      </div>
+      <div class="auth-field password-field">
+        <svg class="icon"><use href="#i-lock"/></svg>
+        <input id="kyro-login-password" name="kyro_pass_field_v8" type="password" placeholder="Password" autocomplete="off" autocapitalize="none" spellcheck="false">
+        <button class="password-toggle" type="button" data-target="kyro-login-password" aria-label="Show password" title="Show password">
+          <svg class="icon"><use href="#i-eye"/></svg>
+        </button>
+      </div>
+      <div class="auth-field password-field" id="kyro-confirm-wrap" hidden>
+        <svg class="icon"><use href="#i-lock"/></svg>
+        <input id="kyro-confirm-password" name="kyro_confirm_field_v8" type="password" placeholder="Confirm password" autocomplete="off" autocapitalize="none" spellcheck="false">
+        <button class="password-toggle" type="button" data-target="kyro-confirm-password" aria-label="Show password" title="Show password">
+          <svg class="icon"><use href="#i-eye"/></svg>
+        </button>
+      </div>
+      <button id="kyro-local-login" class="auth-primary" type="button">Continue</button>
+    </div>
+
+    <div id="kyro-generated-note" class="auth-generated"></div>
+    <button id="kyro-auth-switch" class="auth-switch" type="button">Create account</button>
+    <div class="auth-divider"><span>or</span></div>
+    <button id="firebase-google-btn" class="google-login-btn" type="button">
+      <svg class="google-real-icon" viewBox="0 0 48 48" aria-hidden="true">
+        <path fill="#FFC107" d="M43.61 20.083H42V20H24v8h11.303C33.654 32.657 29.208 36 24 36c-6.627 0-12-5.373-12-12S17.373 12 24 12c3.059 0 5.842 1.153 7.965 3.035l5.657-5.657C34.05 6.053 29.262 4 24 4 12.955 4 4 12.955 4 24s8.955 20 20 20 20-8.955 20-20c0-1.341-.138-2.65-.39-3.917z"/>
+        <path fill="#FF3D00" d="M6.306 14.691l6.571 4.819C14.655 15.108 18.961 12 24 12c3.059 0 5.842 1.153 7.965 3.035l5.657-5.657C34.05 6.053 29.262 4 24 4c-7.682 0-14.315 4.337-17.694 10.691z"/>
+        <path fill="#4CAF50" d="M24 44c5.162 0 9.86-1.977 13.409-5.192l-6.19-5.238C29.211 35.091 26.715 36 24 36c-5.187 0-9.625-3.326-11.278-7.946l-6.522 5.025C9.548 39.556 16.227 44 24 44z"/>
+        <path fill="#1976D2" d="M43.61 20.083H42V20H24v8h11.303a12.02 12.02 0 0 1-4.084 5.57l.003-.002 6.19 5.238C36.974 39.21 44 34 44 24c0-1.341-.138-2.65-.39-3.917z"/>
+      </svg>
+      <span>Continue with Google</span>
+    </button>
+    <button id="kyro-auth-privacy" class="auth-policy-btn" type="button">Privacy &amp; Policy</button>
+    <div id="firebase-auth-status" class="auth-status"></div>
+    <p class="auth-note">Your local login is saved on this device. Removing this site's data removes the saved local account. Google login uses Firebase Authentication.</p>
+  </div>
+</div>
+
+<!-- Login/Create privacy information -->
+<div id="kyro-auth-policy" class="auth-policy-overlay" hidden aria-hidden="true">
+  <div class="auth-policy-card" role="dialog" aria-modal="true" aria-labelledby="kyro-policy-title">
+    <div class="auth-policy-head">
+      <h2 id="kyro-policy-title">KYRO Privacy &amp; Policy</h2>
+      <button id="kyro-auth-policy-close" class="icon-btn" type="button" aria-label="Close">
+        <svg class="icon icon-sm"><use href="#i-x"/></svg>
+      </button>
+    </div>
+    <div class="auth-policy-body">
+      <h3>Local account</h3>
+      <p>Username और password इस browser/device के local storage में account record के रूप में रखे जाते हैं। Password plain text में नहीं, SHA-256 hash के रूप में रखा जाता है। Browser/site data हटाने पर यह local account भी हट जाएगा।</p>
+      <h3>Login</h3>
+      <p>उसी username और सही password से login करने पर KYRO app खुलेगा। गलत credentials होने पर ही error दिखाई जाएगी। Create Account में password और confirm password समान होना जरूरी है।</p>
+      <h3>Google login</h3>
+      <p>Google sign-in Firebase Authentication के माध्यम से चलता है। Google account की authentication Firebase संभालता है।</p>
+      <h3>App data</h3>
+      <p>इस build में local/demo state browser/device पर रखी जा सकती है। Production deployment में अपनी final privacy policy और Firebase security rules को source of truth रखें।</p>
+      <h3>Founder</h3>
+      <p>Founder: <strong>MR. NITIN KUSHWAHA</strong>.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ============ APP SHELL ============ -->
+<div id="app" hidden>
+  <div id="sidebar-overlay"></div>
+
+  <aside id="sidebar">
+    <div class="sb-head">
+      <div class="sb-brand-wrap">
+        <div class="sb-brand">KYR<span>O</span></div>
+      </div>
+      <div style="display:flex;gap:8px;">
+        <button class="icon-btn" id="sb-search-btn"><svg class="icon icon-sm"><use href="#i-search"/></svg></button>
+        <button class="icon-btn" id="sb-close-btn"><svg class="icon icon-sm"><use href="#i-x"/></svg></button>
+      </div>
+    </div>
+    <div class="sb-nav">
+      <button class="sb-item" id="nav-projects"><svg class="icon"><use href="#i-folder"/></svg> Projects</button>
+      <button class="sb-item" id="nav-scheduled"><svg class="icon"><use href="#i-clock"/></svg> Scheduled <span class="soon">SOON</span></button>
+      <button class="sb-item" id="nav-plugins"><svg class="icon"><use href="#i-box"/></svg> Plugins</button>
+      <button class="sb-item" id="nav-library"><svg class="icon"><use href="#i-image"/></svg> Library</button>
+    </div>
+    <div class="sb-chats" id="sb-chat-list" style="flex:1;"></div>
+    <div class="sb-nav sb-foot">
+      <button class="sb-item" id="nav-settings"><svg class="icon"><use href="#i-sliders"/></svg> Settings</button>
+      <button class="sb-item" id="nav-help"><svg class="icon"><use href="#i-help"/></svg> Help &amp; Support</button>
+      <button class="sb-item" id="nav-about"><svg class="icon"><use href="#i-info"/></svg> About <span class="kyro-word">KYR<span class="kyro-o">O</span></span></button>
+      <button class="sb-item danger" id="nav-logout"><svg class="icon"><use href="#i-logout"/></svg> Logout</button>
+    </div>
+    <div class="sb-bottom-dock">
+      <button class="sb-newchat" id="sb-newchat" aria-label="New Chat"><span class="left"><svg class="icon"><use href="#i-edit"/></svg><span>Chat</span></span></button>
+      <button class="sb-profile-mini sb-bottom-profile" id="sb-profile-mini" aria-label="Profile photo"><span id="sb-profile-fallback">K</span><img id="sb-profile-photo" alt="Profile"></button>
+    </div>
+  </aside>
+
+  <main id="main">
+    <header id="topbar">
+      <button class="icon-btn top-menu-btn" id="btn-sidebar" aria-label="Open menu">
+        <svg class="icon"><use href="#i-menu"/></svg>
+      </button>
+      <button class="model-chip" id="btn-model"><span class="dot"></span><span id="model-chip-label">KYRO</span><svg class="icon icon-sm"><use href="#i-chevdown"/></svg></button>
+      
+      <div class="top-actions" aria-label="Chat actions">
+        <button class="top-compose-btn" id="btn-top-newchat" aria-label="New chat">
+          <svg class="icon"><use href="#i-edit"/></svg>
+        </button>
+        <button class="more-btn" id="btn-profile" aria-label="More actions">
+          <svg class="icon"><use href="#i-more"/></svg>
+        </button>
+      </div>
+    </header>
+
+    <div id="home-view">
+      <div class="home-greeting">
+        <h1 id="greeting-title">Hello, there</h1>
+        <p>How can I help you today?</p>
+      </div>
+      <div class="home-logo">
+        <div class="logo-glow"></div>
+        <div class="logo-mark"></div>
+      </div>
+      <div class="quick-row">
+        <button class="quick-tile" data-attach="camera"><svg class="icon"><use href="#i-camera"/></svg><span>Camera</span></button>
+        <button class="quick-tile" data-attach="gallery"><svg class="icon"><use href="#i-image"/></svg><span>Photos</span></button>
+        <button class="quick-tile" data-attach="files"><svg class="icon"><use href="#i-paperclip"/></svg><span>Files</span></button>
+        <button class="quick-tile" data-attach="pdf"><svg class="icon"><use href="#i-file"/></svg><span>Documents</span></button>
+        <button class="quick-tile" data-nav="plugins"><svg class="icon"><use href="#i-box"/></svg><span>Plugins</span></button>
+        
+      </div>
+    </div>
+
+    <div id="chat-view" hidden></div>
+
+    <div id="composer-wrap">
+      <div id="composer">
+        <div class="composer-attachments" id="composer-attachments" hidden>
+          <div class="attach-chips" id="attach-chips"></div>
+        </div>
+        <div class="composer-row">
+          <button class="composer-btn plus" id="btn-attach"><svg class="icon"><use href="#i-plus"/></svg></button>
+          <textarea id="msg-input" rows="1" placeholder="Ask anything..."></textarea>
+          <button class="composer-btn mic" id="btn-mic"><svg class="icon"><use href="#i-mic"/></svg></button>
+          <button class="composer-btn send" id="btn-send" disabled><svg class="icon"><use href="#i-send"/></svg></button>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<!-- ============ SHEETS ============ -->
+<div class="sheet-backdrop" id="sheet-backdrop"></div>
+
+<div class="sheet" id="sheet-attach">
+  <div class="sheet-handle"></div>
+  <h3>Add to chat</h3>
+  <div class="sheet-grid">
+    <button class="sheet-tile" data-attach="camera"><div class="ic-wrap"><svg class="icon"><use href="#i-camera"/></svg></div><span>Camera</span></button>
+    <button class="sheet-tile" data-attach="gallery"><div class="ic-wrap"><svg class="icon"><use href="#i-image"/></svg></div><span>Gallery</span></button>
+    <button class="sheet-tile" data-attach="files"><div class="ic-wrap"><svg class="icon"><use href="#i-paperclip"/></svg></div><span>Files</span></button>
+    <button class="sheet-tile" data-attach="pdf"><div class="ic-wrap"><svg class="icon"><use href="#i-file"/></svg></div><span>PDF</span></button>
+    <button class="sheet-tile" data-attach="gallery"><div class="ic-wrap"><svg class="icon"><use href="#i-image"/></svg></div><span>Image</span></button>
+    
+    <button class="sheet-tile" id="kyro-scan-doc-sheet" type="button"><div class="ic-wrap"><svg class="icon"><use href="#i-scan"/></svg></div><span>Scan Doc</span></button>
+    <button class="sheet-tile" id="kyro-deep-research-sheet" type="button"><div class="ic-wrap"><svg class="icon"><use href="#i-search"/></svg></div><span>Deep Research</span></button>
+  </div>
+</div>
+
+<div class="sheet" id="sheet-profile" aria-label="Chat actions">
+  <div class="sheet-handle"></div>
+  <h3 id="profile-sheet-title">Chat actions</h3>
+  <div class="sheet-actions quick-action-panel" id="profile-actions-list">
+    <button class="sheet-action" id="profile-share-action" type="button">
+      <svg class="icon"><use href="#i-share"/></svg><span>Share</span>
+    </button>
+    <button class="sheet-action" id="profile-pin-action" type="button">
+      <svg class="icon"><use href="#i-pin"/></svg><span>Pin</span>
+    </button>
+    <button class="sheet-action" id="profile-project-action" type="button">
+      <svg class="icon"><use href="#i-folder"/></svg><span>Add to project</span>
+      <svg class="icon icon-sm" style="margin-left:auto"><use href="#i-chevright"/></svg>
+    </button>
+    <button class="sheet-action" id="profile-upload-action" type="button">
+      <svg class="icon"><use href="#i-paperclip"/></svg><span>Uploaded files</span>
+    </button>
+    <button class="sheet-action" id="profile-find-action" type="button">
+      <svg class="icon"><use href="#i-search"/></svg><span>Find in chat</span>
+    </button>
+    <button class="sheet-action" id="profile-home-action" type="button">
+      <svg class="icon"><use href="#i-home"/></svg><span>Add to home</span>
+    </button>
+    <button class="sheet-action" id="profile-archive-action" type="button">
+      <svg class="icon"><use href="#i-archive"/></svg><span>Archive</span>
+    </button>
+    <button class="sheet-action danger" id="profile-delete-action" type="button">
+      <svg class="icon"><use href="#i-trash"/></svg><span>Delete</span>
+    </button>
+  </div>
+</div>
+
+<div class="sheet" id="sheet-msg-actions">
+  <div class="sheet-handle"></div>
+  <div class="sheet-actions" id="msg-actions-list"></div>
+</div>
+
+
+<!-- KYRO Conversation Share Sheet -->
+<div class="kyro-share-backdrop" id="kyro-share-backdrop" aria-hidden="true">
+  <section class="kyro-share-sheet" id="kyro-share-sheet" role="dialog" aria-modal="true" aria-labelledby="kyro-share-title">
+    <div class="kyro-share-grab"></div>
+    <h2 id="kyro-share-title">Share conversation</h2>
+    <p class="kyro-share-subtitle">Anyone with the link can view previous messages.</p>
+    <div class="kyro-share-preview" id="kyro-share-preview">
+      <div class="kyro-share-preview-inner">
+        <div class="kyro-share-preview-title" id="kyro-share-preview-title">KYRO Chat</div>
+        <div class="kyro-share-preview-brand">KYRO</div>
+      </div>
+    </div>
+    <div class="kyro-share-dots" aria-hidden="true"><span class="active"></span><span></span><span></span></div>
+    <div class="kyro-share-grid" id="kyro-share-grid">
+      <button type="button" class="kyro-share-app" data-share-target="messages"><span class="share-app-icon messages">•••</span><b>Messages</b><small>Direct</small></button>
+      <button type="button" class="kyro-share-app" data-share-target="instagram"><span class="share-app-icon instagram">◎</span><b>Instagram</b><small>Direct</small></button>
+      <button type="button" class="kyro-share-app" data-share-target="whatsapp"><span class="share-app-icon whatsapp">◔</span><b>WhatsApp</b><small>Direct</small></button>
+      <button type="button" class="kyro-share-app" data-share-target="telegram"><span class="share-app-icon telegram">➤</span><b>Telegram</b><small>Direct</small></button>
+      <button type="button" class="kyro-share-app" data-share-target="whatsapp-status"><span class="share-app-icon whatsapp">◔</span><b>WhatsApp</b><small>Status</small></button>
+      <button type="button" class="kyro-share-app" data-share-target="instagram-story"><span class="share-app-icon instagram">◎</span><b>Instagram</b><small>Stories</small></button>
+      <button type="button" class="kyro-share-app" data-share-target="facebook-feed"><span class="share-app-icon facebook">f</span><b>Facebook</b><small>Feed</small></button>
+      <button type="button" class="kyro-share-app" data-share-target="facebook-story"><span class="share-app-icon facebook">f</span><b>Facebook</b><small>Stories</small></button>
+    </div>
+    <div class="kyro-share-bottom">
+      <button type="button" id="kyro-copy-share-link"><span class="kyro-share-round-icon">↗</span><b>Copy link</b></button>
+      <button type="button" id="kyro-system-share"><span class="kyro-share-round-icon">♧</span><b>Share via…</b></button>
+    </div>
+    <button type="button" class="kyro-share-close" id="kyro-share-close" aria-label="Close share conversation" onclick="closeKyroShare();return false;" onpointerdown="event.preventDefault();event.stopPropagation();closeKyroShare();return false;">×</button>
+  </section>
+</div>
+
+
+
+<!-- hidden file inputs -->
+<input type="file" id="file-camera" accept="image/*" capture="environment" hidden>
+<input type="file" id="file-gallery" accept="image/*" hidden>
+<input type="file" id="file-files" hidden>
+<input type="file" id="file-pdf" accept="application/pdf" hidden>
+<input type="file" id="file-profile" accept="image/*" hidden>
+
+
+<!-- KYRO V12.1 image viewer -->
+<div id="kyro-image-viewer" aria-hidden="true">
+  <button id="kyro-image-viewer-close" type="button" aria-label="Close image viewer">×</button>
+  <div id="kyro-image-viewer-stage">
+    <img id="kyro-image-viewer-img" alt="Preview">
+  </div>
+</div>
+
+
+
+<!-- ============ FIRST-RUN DEVICE PERMISSION SETUP ============ -->
+
+<div id="kyro-permission-setup" hidden aria-hidden="true">
+  <div class="kps-card" role="dialog" aria-modal="true" aria-labelledby="kps-title">
+    <div class="kps-logo"><div class="logo-mark"></div></div>
+    <h2 id="kps-title">Set up KYRO</h2>
+    <p>पहली बार APK खोलने पर KYRO को voice और camera features के लिए Android permissions चाहिए। Gallery/Photos के लिए system picker इस्तेमाल होगा।</p>
+    <div class="kps-list">
+      <div class="kps-row"><div class="kps-icon">🎙️</div><div><b>Microphone</b><small>Voice input के लिए</small></div></div>
+      <div class="kps-row"><div class="kps-icon">📷</div><div><b>Camera</b><small>Camera से photo लेने के लिए</small></div></div>
+      <div class="kps-row"><div class="kps-icon">🖼️</div><div><b>Photos &amp; Gallery</b><small>Gallery/file picker से images चुनने के लिए</small></div></div>
+    </div>
+    <button id="kyro-permission-allow" type="button">Allow &amp; Continue</button>
+    <button id="kyro-permission-skip" type="button">Set up later</button>
+    <div id="kyro-permission-status" class="kps-status"></div>
+  </div>
+</div>
+
+<!-- ============ MODALS ============ -->
+<div class="modal-backdrop" id="modal-backdrop"></div>
+
+<div class="modal" id="modal-settings">
+  <div class="modal-head">
+    <div class="back" id="settings-back-wrap" hidden><button class="icon-btn" id="settings-back"><svg class="icon icon-sm"><use href="#i-chevleft"/></svg></button><h2 id="settings-title">Settings</h2></div>
+    <h2 id="settings-title-main">Settings</h2>
+    <button class="icon-btn" id="settings-close"><svg class="icon icon-sm"><use href="#i-x"/></svg></button>
+  </div>
+  <div class="modal-body">
+    <div class="about-hero settings-hero">
+      <div class="logo-wrap">
+        <div class="logo-glow"></div>
+        <div class="logo-mark settings-logo"></div>
+      </div>
+      <h2 class="kyro-word">KYR<span class="kyro-o">O</span></h2>
+      <p>Powered by Synapse</p>
+    </div>
+    <div id="settings-root">
+      <div class="profile-photo-card" style="display:flex;align-items:center;gap:14px;padding:12px 4px 16px;">
+        <button class="avatar profile-photo-btn" id="profile-photo-btn" type="button" aria-label="Change profile photo">K</button>
+        <div class="lbl" style="flex:1;"><b>Profile photo</b><small>Choose a photo for your profile</small></div>
+        <button class="set-item" id="profile-photo-change" type="button" style="width:auto;padding:10px 12px;border-radius:14px;">Change</button>
+      </div>
+      <div class="set-list">
+<button class="set-item" data-panel="appearance"><svg class="icon"><use href="#i-sun"/></svg><div class="lbl"><b>Theme &amp; Appearance</b><small>Change theme and visual preferences</small></div><svg class="icon icon-sm chev"><use href="#i-chevright"/></svg></button>
+                <button class="set-item" data-panel="language"><svg class="icon"><use href="#i-globe"/></svg><div class="lbl"><b>Language</b><small>UI &amp; chat language</small></div><svg class="icon icon-sm chev"><use href="#i-chevright"/></svg></button>
+        <button class="set-item" data-panel="api"><svg class="icon"><use href="#i-key"/></svg><div class="lbl"><b>API Manager</b><small id="api-count-lbl">No API connected</small></div><svg class="icon icon-sm chev"><use href="#i-chevright"/></svg></button>
+        <button class="set-item" data-panel="models"><svg class="icon"><use href="#i-box"/></svg><div class="lbl"><b>Model Manager</b><small>Favourites &amp; recents</small></div><svg class="icon icon-sm chev"><use href="#i-chevright"/></svg></button>
+        <button class="set-item" data-panel="voice"><svg class="icon"><use href="#i-mic"/></svg><div class="lbl"><b>Voice</b><small>Speech input &amp; output</small></div><svg class="icon icon-sm chev"><use href="#i-chevright"/></svg></button>
+        <button class="set-item" id="settings-web-search" type="button"><svg class="icon"><use href="#i-globe"/></svg><div class="lbl"><b>Web Search</b><small id="web-search-status">Search the live web</small></div><div class="toggle" id="toggle-websearch"></div></button>
+        <button class="set-item" id="btn-backup"><svg class="icon"><use href="#i-download"/></svg><div class="lbl"><b>Backup</b><small>Export a .kyro file</small></div><svg class="icon icon-sm chev"><use href="#i-chevright"/></svg></button>
+        <button class="set-item" id="btn-restore"><svg class="icon"><use href="#i-refresh"/></svg><div class="lbl"><b>Restore</b><small>Import a .kyro file</small></div><svg class="icon icon-sm chev"><use href="#i-chevright"/></svg></button>
+        <button class="set-item" data-panel="security"><svg class="icon"><use href="#i-lock"/></svg><div class="lbl"><b>Security</b><small>App lock</small></div><svg class="icon icon-sm chev"><use href="#i-chevright"/></svg></button>
+      </div>
+    </div>
+
+    <div id="panel-appearance" hidden>
+      <div class="theme-grid" id="theme-grid"></div>
+      <div class="set-item"><svg class="icon"><use href="#i-sliders"/></svg><div class="lbl"><b>Dynamic font scaling</b><small>Accessibility</small></div><div class="toggle" id="toggle-fontscale"></div></div>
+      <div class="set-item"><svg class="icon"><use href="#i-sun"/></svg><div class="lbl"><b>High contrast</b><small>Accessibility</small></div><div class="toggle" id="toggle-contrast"></div></div>
+    </div>
+
+    <div id="panel-language" hidden>
+      <div class="sb-label" style="padding-left:2px;">UI Language</div>
+      <div id="lang-list-ui"></div>
+      <div class="sb-label" style="padding-left:2px;">Chat Language</div>
+      <div id="lang-list-chat"></div>
+    </div>
+
+    <div id="panel-api" hidden>
+      <div id="api-key-list"></div>
+      <div class="field" style="margin-top:var(--sp-2);"><svg class="icon"><use href="#i-key"/></svg><input id="api-key-input" type="password" placeholder="Paste your API key"><button id="api-key-toggle-vis" style="color:var(--text-faint);display:flex;"><svg class="icon icon-sm"><use href="#i-eye"/></svg></button></div>
+      <button class="btn-primary" id="api-key-add">Add API Key</button>
+      <p class="onboard-note" id="api-detect-note"></p>
+    </div>
+
+    <div id="panel-models" hidden>
+<div id="model-list"></div>
+    </div>
+
+    <div id="panel-voice" hidden>
+      <div class="set-item"><svg class="icon"><use href="#i-mic"/></svg><div class="lbl"><b>Speech to text</b><small id="stt-support">Checking support…</small></div></div>
+      <div class="set-item"><svg class="icon"><use href="#i-volume"/></svg><div class="lbl"><b>Read replies aloud</b><small>Auto text-to-speech</small></div><div class="toggle" id="toggle-tts"></div></div>
+    </div>
+
+    <div id="panel-security" hidden>
+      <div class="set-item"><svg class="icon"><use href="#i-lock"/></svg><div class="lbl"><b>App lock (PIN)</b><small>This device only — demo, not encrypted yet</small></div><div class="toggle" id="toggle-applock"></div></div>
+      <p class="onboard-note">Keys and chats live in memory for this session. Wiring in on-device encrypted storage is next on the list.</p>
+    </div>
+
+    <div id="panel-scheduled" hidden>
+  <div id="kyro-tasks-page" aria-label="Scheduled tasks">
+    <header class="kyro-tasks-head">
+      <button type="button" class="kyro-tasks-icon" id="kyro-tasks-back" aria-label="Back"><svg class="icon"><use href="#i-chevleft"/></svg></button>
+      <div class="kyro-tasks-title-wrap">
+        <h1>Tasks</h1>
+        <button type="button" class="kyro-tasks-filter-trigger" id="kyro-tasks-filter-trigger">Chat <svg class="icon"><use href="#i-chevdown"/></svg></button>
+      </div>
+      <button type="button" class="kyro-tasks-icon" id="kyro-tasks-filter" aria-label="Filter"><svg class="icon"><use href="#i-sliders"/></svg></button>
+      <div class="kyro-tasks-filter-menu" id="kyro-tasks-filter-menu" hidden>
+        <button type="button" data-task-filter="active">Active <span>✓</span></button>
+        <button type="button" data-task-filter="paused">Paused</button>
+        <button type="button" data-task-filter="completed">Completed</button>
+      </div>
+    </header>
+
+    <main class="kyro-tasks-scroll" id="kyro-tasks-list">
+      <article class="kyro-task-card" data-task-status="active">
+        <div class="kyro-task-card-head"><div class="kyro-task-name"><span class="kyro-task-emoji">✉️</span><strong>Email monitor</strong></div><button type="button" class="kyro-task-plus" data-task-name="Email monitor" aria-label="Add Email monitor">+</button></div>
+        <p>Scan my emails and let me know about anything that needs my attention</p>
+      </article>
+      <article class="kyro-task-card" data-task-status="active">
+        <div class="kyro-task-card-head"><div class="kyro-task-name"><span class="kyro-task-emoji">📖</span><strong>Weekend long read</strong></div><button type="button" class="kyro-task-plus" data-task-name="Weekend long read" aria-label="Add Weekend long read">+</button></div>
+        <p>Every Saturday, find me an exceptional recent long read based on my interests</p>
+      </article>
+      <article class="kyro-task-card" data-task-status="active">
+        <div class="kyro-task-card-head"><div class="kyro-task-name"><span class="kyro-task-emoji">🏷️</span><strong>Sale monitor</strong></div><button type="button" class="kyro-task-plus" data-task-name="Sale monitor" aria-label="Add Sale monitor">+</button></div>
+        <p>Watch my favorite stores and let me know when there's a good sale</p>
+      </article>
+      <article class="kyro-task-card" data-task-status="active">
+        <div class="kyro-task-card-head"><div class="kyro-task-name"><span class="kyro-task-emoji">🎵</span><strong>Concert alerts</strong></div><button type="button" class="kyro-task-plus" data-task-name="Concert alerts" aria-label="Add Concert alerts">+</button></div>
+        <p>Let me know when artists I like announce concerts near me</p>
+      </article>
+      <article class="kyro-task-card" data-task-status="active">
+        <div class="kyro-task-card-head"><div class="kyro-task-name"><span class="kyro-task-emoji">🎉</span><strong>Weekend ideas</strong></div><button type="button" class="kyro-task-plus" data-task-name="Weekend ideas" aria-label="Add Weekend ideas">+</button></div>
+        <p>Every Thursday, send me ideas for things to do nearby this weekend</p>
+      </article>
+    </main>
+
+    <div class="kyro-task-composer" id="kyro-task-composer">
+      <input id="kyro-task-input" type="text" autocomplete="off" placeholder="Create a task" aria-label="Create a task">
+      <button type="button" id="kyro-task-mic" aria-label="Voice input"><svg class="icon"><use href="#i-mic"/></svg></button>
+    </div>
+  </div>
+</div>
+
+<div id="panel-projects" hidden>
+  <div id="kyro-projects-page" aria-label="Projects">
+    <header class="kyro-projects-head">
+      <button type="button" class="kyro-projects-circle" id="kyro-projects-back" aria-label="Back"><svg class="icon"><use href="#i-chevleft"/></svg></button>
+      <h1>Projects</h1>
+      <button type="button" class="kyro-projects-circle" id="kyro-projects-add" aria-label="New project"><svg class="icon"><use href="#i-plus"/></svg></button>
+    </header>
+
+    <nav class="kyro-projects-tabs" aria-label="Project filters">
+      <button type="button" class="active" data-project-filter="all">All</button>
+      <button type="button" data-project-filter="mine">Created by you</button>
+      <button type="button" data-project-filter="shared">Shared with you</button>
+    </nav>
+
+    <main class="kyro-projects-scroll" id="kyro-projects-content">
+      <div id="projects-list" class="kyro-projects-list"></div>
+      <div id="kyro-projects-empty" class="kyro-projects-empty" hidden>
+        <svg class="icon"><use href="#i-folder"/></svg>
+        <strong>No projects yet</strong>
+        <span>Create a project with the + button.</span>
+      </div>
+    </main>
+
+    <div class="kyro-projects-searchbar">
+      <svg class="icon"><use href="#i-search"/></svg>
+      <input id="kyro-projects-search" type="search" autocomplete="off" placeholder="Search" aria-label="Search projects">
+    </div>
+  </div>
+</div>
+
+  <div id="kyro-project-create-page" aria-label="New Project" hidden>
+    <header class="kyro-project-create-head">
+      <button type="button" class="kyro-projects-circle" id="kyro-project-create-back" aria-label="Back"><svg class="icon"><use href="#i-chevleft"/></svg></button>
+      <h1>New Project</h1><span class="kyro-project-create-head-spacer"></span>
+    </header>
+    <main class="kyro-project-create-scroll">
+      <div class="kyro-project-name-field">
+        <button type="button" id="kyro-project-icon-trigger" class="kyro-project-name-icon" aria-label="Choose project icon"><svg class="icon"><use href="#i-folder"/></svg></button>
+        <input id="kyro-project-name-input" type="text" maxlength="80" autocomplete="off" placeholder="E.g. Party planning" aria-label="Project name">
+      </div>
+      <div class="kyro-project-category-strip" id="kyro-project-category-strip" aria-label="Project suggestions">
+        <button type="button" class="kyro-project-category" data-project-preset="Homework" data-project-icon="book" data-project-tone="blue"><span class="preset-icon book">▣</span>Homework</button>
+        <button type="button" class="kyro-project-category" data-project-preset="Investing" data-project-icon="dollar" data-project-tone="green"><span class="preset-icon dollar">$</span>Investing</button>
+        <button type="button" class="kyro-project-category" data-project-preset="Writing" data-project-icon="pen" data-project-tone="purple"><span class="preset-icon pen">✎</span>Writing</button>
+        <button type="button" class="kyro-project-category" data-project-preset="Health" data-project-icon="heart" data-project-tone="red"><span class="preset-icon heart">♡</span>Health</button>
+        <button type="button" class="kyro-project-category" data-project-preset="Travel" data-project-icon="plane" data-project-tone="gold"><span class="preset-icon plane">✈</span>Travel</button>
+        <button type="button" class="kyro-project-category" data-project-preset="Study" data-project-icon="book" data-project-tone="blue"><span class="preset-icon book">▣</span>Study</button>
+        <button type="button" class="kyro-project-category" data-project-preset="Ideas" data-project-icon="brain" data-project-tone="pink"><span class="preset-icon brain">◉</span>Ideas</button>
+      </div>
+      <p class="kyro-project-create-description">Projects give ChatGPT shared context across chats and files, all in one place.</p>
+      <button type="button" class="kyro-project-more-options" id="kyro-project-more-options">More options</button>
+    </main>
+    <div class="kyro-project-create-footer"><button type="button" id="kyro-project-create-submit" class="kyro-project-create-submit" disabled>Create Project</button></div>
+    <div id="kyro-project-icon-modal" class="kyro-project-overlay" hidden>
+      <div class="kyro-project-icon-dialog" role="dialog" aria-modal="true" aria-label="Choose project icon">
+        <div class="kyro-project-picker-preview"><svg class="icon" id="kyro-project-picker-preview-icon"><use href="#i-folder"/></svg></div>
+        <div class="kyro-project-color-row" id="kyro-project-color-row">
+          <button type="button" class="kyro-project-color selected" data-project-tone="gray" aria-label="Gray"></button><button type="button" class="kyro-project-color" data-project-tone="red" aria-label="Red"></button><button type="button" class="kyro-project-color" data-project-tone="orange" aria-label="Orange"></button><button type="button" class="kyro-project-color" data-project-tone="gold" aria-label="Yellow"></button><button type="button" class="kyro-project-color" data-project-tone="green" aria-label="Green"></button><button type="button" class="kyro-project-color" data-project-tone="blue" aria-label="Blue"></button>
+        </div>
+        <div class="kyro-project-icon-grid" id="kyro-project-icon-grid"></div>
+        <button type="button" class="kyro-project-dialog-ok" id="kyro-project-icon-ok">OK</button>
+      </div>
+    </div>
+    <div id="kyro-project-memory-modal" class="kyro-project-overlay" hidden>
+      <div class="kyro-project-memory-dialog" role="dialog" aria-modal="true" aria-label="Memory options">
+        <h2>Memory</h2>
+        <label class="kyro-memory-option selected"><input type="radio" name="kyro-project-memory" value="default" checked><span class="kyro-radio"></span><span><b>Default memory</b><small>This project can access memory from outside chats, and vice versa.</small></span></label>
+        <label class="kyro-memory-option"><input type="radio" name="kyro-project-memory" value="project"><span class="kyro-radio"></span><span><b>Project-only memory</b><small>This project can only access its own memory. Its memory is hidden from outside chats.</small></span></label>
+        <button type="button" class="kyro-project-dialog-ok" id="kyro-project-memory-ok">OK</button>
+      </div>
+    </div>
+  </div>
+    <div id="panel-plugins" hidden>
+      <div id="plugins-list"></div>
+    </div>
+
+    <div id="panel-library" hidden>
+      <div id="kyro-library-page" aria-label="Library">
+        <header class="kyro-library-head">
+          <button type="button" class="kyro-library-circle" id="kyro-library-back" aria-label="Back"><svg class="icon"><use href="#i-chevleft"/></svg></button>
+          <h1>Library</h1>
+          <button type="button" class="kyro-library-circle" id="kyro-library-more" aria-label="Library options"><svg class="icon"><use href="#i-more"/></svg></button>
+          <div class="kyro-library-more-menu" id="kyro-library-more-menu" hidden>
+            <button type="button" data-library-action="select"><svg class="icon"><use href="#i-check"/></svg><span>Select</span></button>
+            <button type="button" data-library-action="upload"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 16V4m0 0L7 9m5-5 5 5M5 20h14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Upload files</span></button>
+            <button type="button" data-library-action="folder"><span class="kyro-library-folder-plus"><svg class="icon"><use href="#i-folder"/></svg><b>+</b></span><span>New folder</span></button>
+            <div class="kyro-library-menu-divider"></div>
+            <button type="button" data-library-action="grid"><svg class="icon"><use href="#i-box"/></svg><span>Grid</span></button>
+            <button type="button" data-library-action="list"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h1M9 6h11M4 12h1M9 12h11M4 18h1M9 18h11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><span>List</span><span class="kyro-library-menu-check" id="kyro-library-list-check">✓</span></button>
+            <div class="kyro-library-menu-divider"></div>
+            <button type="button" data-library-action="deleted"><svg class="icon"><use href="#i-trash"/></svg><span>Deleted</span></button>
+          </div>
+        </header>
+
+        <nav class="kyro-library-tabs" aria-label="Library filters">
+          <button type="button" class="active" data-library-filter="all">All</button>
+          <button type="button" data-library-filter="images">Images</button>
+          <button type="button" data-library-filter="files">Files</button>
+        </nav>
+
+        <div class="kyro-library-selectbar" id="kyro-library-selectbar" hidden>
+          <button type="button" id="kyro-library-select-all">Select all</button>
+          <button type="button" id="kyro-library-select-cancel">Cancel</button>
+          <button type="button" id="kyro-library-delete-selected" class="danger">Delete selected</button>
+        </div>
+
+        <main class="kyro-library-scroll" id="kyro-library-content">
+          <div id="kyro-library-grid" class="kyro-library-grid"></div>
+          <div id="kyro-library-empty" class="kyro-library-empty" hidden>
+            <svg class="icon"><use href="#i-folder"/></svg>
+            <strong>Your library is empty</strong>
+            <span>Upload files or create a folder to get started.</span>
+          </div>
+        </main>
+
+        <div class="kyro-library-searchbar">
+          <svg class="icon"><use href="#i-search"/></svg>
+          <input id="kyro-library-search" type="search" autocomplete="off" placeholder="Search library" aria-label="Search library">
+        </div>
+
+        <input id="kyro-library-file-input" type="file" multiple hidden>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="modal-about">
+  <div class="modal-head">
+    <div class="back" id="about-back-wrap"><button class="icon-btn" id="about-back" aria-label="Back"><svg class="icon icon-sm"><use href="#i-chevleft"/></svg></button><h2>About <span class="kyro-word">KYR<span class="kyro-o">O</span></span></h2></div>
+    <button class="icon-btn" id="about-close" aria-label="Close"><svg class="icon icon-sm"><use href="#i-x"/></svg></button>
+  </div>
+  <div class="modal-body">
+    <div class="about-hero">
+      <div class="logo-wrap"><div class="logo-glow"></div><div class="logo-mark"></div></div>
+      <h2 class="kyro-word">KYR<span class="kyro-o">O</span></h2>
+      <p>Powered by Synapse</p>
+    </div>
+    <a href="https://www.instagram.com/the_nitin_54" target="_blank" rel="noopener" class="insta-link">
+      <div class="ic-wrap"><svg class="icon"><use href="#i-instagram"/></svg></div>
+      <div><b>@the_nitin_54</b><small>Follow on Instagram</small></div>
+    </a>
+    <div class="about-row"><span>Founder</span><span class="r">MR. NITIN KUSHWAHA</span></div>
+    <div class="about-row"><span>Version</span><span class="r">1.0.0</span></div>
+    <div class="about-row"><span>Build</span><span class="r" id="build-number">KYRO-2026.08.07</span></div>
+    <div class="about-row"><span>Privacy Policy</span><span class="r"><svg class="icon icon-sm"><use href="#i-chevright"/></svg></span></div>
+    <div class="about-row"><span>Terms of Use</span><span class="r"><svg class="icon icon-sm"><use href="#i-chevright"/></svg></span></div>
+    <div class="about-row"><span>Open Source Licenses</span><span class="r"><svg class="icon icon-sm"><use href="#i-chevright"/></svg></span></div>
+    <div class="about-row" style="border-bottom:none;"><span>Copyright</span><span class="r">© 2026 <span class="kyro-word">KYR<span class="kyro-o">O</span></span></span></div>
+
+    <div class="info-section">
+      <div class="info-title">About KYRO</div>
+      <p>KYRO is a mobile-first AI chat interface designed around a compact, ChatGPT-style conversation experience. The current build includes local Demo Mode plus KYRO model entries, profile controls, attachments, voice input, themes, model switching, Web Search controls, and Help &amp; Support.</p>
+      <div class="info-grid">
+        <div><b>Founder</b><span>MR. NITIN KUSHWAHA</span></div>
+        <div><b>Version</b><span>1.0.0</span></div>
+        <div><b>Build</b><span>KYRO-2026.08.07</span></div>
+        <div><b>Demo Mode</b><span>Offline · no key needed</span></div>
+      </div>
+      <div class="info-title">Models</div>
+      <ul class="info-list">
+        <li><b>KYRO</b> — local demo responses; no API key required.</li>
+        <li><b>KYRO 1</b> — KYRO model entry described as fast, vision and docs.</li>
+        <li><b>KYRO 1.2</b> — KYRO model entry described as reasoning and vision.</li>
+      </ul>
+      <div class="info-title">Main features</div>
+      <ul class="info-list">
+        <li>Chat messages with compact controls and local conversation state.</li>
+        <li>Photo/file attachments and a library for attached items.</li>
+        <li>Voice input and optional read-aloud replies.</li>
+        <li>Profile photo update from the profile controls.</li>
+        <li>Theme selection, including Pure Black mode.</li>
+        <li>Model switching from the compact model popup.</li>
+        <li>Web Search can be enabled or disabled from Settings.</li>
+        <li>Settings include language, API Manager, Model Manager, Voice, Web Search, backup/restore and security controls.</li>
+        <li>Sidebar can be opened from the menu button and by the edge swipe gesture.</li>
+      </ul>
+      <div class="info-title">Logo &amp; status</div>
+      <p>The KYRO logo is used throughout the interface. During generation/search status it can be shown as the animated status logo; when the result is complete, the status indicator is removed.</p>
+      <div class="info-title">Privacy note</div>
+      <p>This build stores its demo state in the browser session/local device state. API keys and chats are handled by the app's local state in this build.</p>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="modal-help">
+  <div class="modal-head">
+    <div class="back" id="help-back-wrap"><button class="icon-btn" id="help-back" aria-label="Back"><svg class="icon icon-sm"><use href="#i-chevleft"/></svg></button><h2>Help &amp; Support</h2></div>
+    <button class="icon-btn" id="help-close" aria-label="Close"><svg class="icon icon-sm"><use href="#i-x"/></svg></button>
+  </div>
+  <div class="modal-body">
+    <div class="about-hero help-hero">
+      <div class="logo-wrap">
+        <div class="logo-glow"></div>
+        <div class="logo-mark help-logo"></div>
+      </div>
+      <h2 class="kyro-word">KYR<span class="kyro-o">O</span></h2>
+      <p>How can we help?</p>
+    </div>
+    <div class="support-section">
+      <div class="support-card"><b>Chat &amp; Messages</b><p>Type in the bottom composer and send with the arrow. Your conversation stays in the chat flow. Demo Mode returns local scripted replies; connected model entries can be used when the required API is configured.</p></div>
+      <div class="support-card"><b>Files &amp; Photos</b><p>Use the composer attachment controls to add photos or files. Attached items can also appear in the local Library.</p></div>
+      <div class="support-card"><b>Voice &amp; Microphone</b><p>Use the microphone control for speech input. The app also has an optional read-replies-aloud setting.</p></div>
+      <div class="support-card"><b>Models</b><p>The compact model popup contains KYRO, KYRO 1 and KYRO 1.2. Tap the model name to open it and select a model.</p></div>
+      <div class="support-card"><b>Web Search</b><p>Web Search is managed from Settings and can be enabled or disabled there.</p></div>
+      <div class="support-card"><b>Themes</b><p>The app supports multiple visual themes. Pure Black is designed as the minimal black-and-white presentation with animations disabled.</p></div>
+      <div class="support-card"><b>Profile</b><p>Open the profile control to update the profile photo. The selected photo is stored locally for the session/device state.</p></div>
+      <div class="support-card"><b>Settings</b><p>Settings contains language controls, API Manager, Model Manager, Voice, Web Search, backup/restore and security controls. The app also exposes About and Help &amp; Support from the sidebar.</p></div>
+      <div class="support-card"><b>Sidebar &amp; gestures</b><p>Tap the menu button to open the sidebar. The interface also supports an edge swipe gesture to open or close the sidebar.</p></div>
+      <div class="support-card"><b>About KYRO</b><p>Founder: MR. NITIN KUSHWAHA · Version: 1.0.0 · Build: KYRO-2026.08.07. Powered by Synapse.</p></div>
+      <div class="support-card"><b>Need an answer about KYRO?</b><p>You can ask the chat about the founder, version, models, settings, themes, attachments, voice, Web Search or how the interface works. Demo Mode includes local answers for common KYRO questions.</p></div>
+    </div>
+    <div class="help-note">If something is not working, close and reopen the screen first. This build keeps demo conversations and related UI state locally.</div>
+  </div>
+</div>
+
+<div class="modal" id="modal-model">
+  <div class="modal-head"><h2>Modes</h2><button class="icon-btn" id="model-modal-close"><svg class="icon icon-sm"><use href="#i-x"/></svg></button></div>
+  <div class="modal-body">
+    <div id="model-modal-list"></div>
+  </div>
+</div>
+
+<div id="toast-root"></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- KYRO V17 FIX: hidden sheet backdrop must never intercept the application.
+     It becomes interactive only while .show is present. -->
+
+
+
+
+
+
+
+<div id="kyro-profile-page" aria-hidden="true">
+  <div class="kyro-profile-inner">
+    <div class="kyro-profile-top">
+      <button class="kyro-profile-back" id="kyro-profile-back" aria-label="Back"><svg class="icon"><use href="#i-chevleft"/></svg></button>
+    </div>
+
+    <section class="kyro-profile-hero">
+      <div class="kyro-profile-photo-wrap">
+        <div class="kyro-profile-fallback" id="kyro-profile-fallback">K</div>
+        <img class="kyro-profile-photo" id="kyro-profile-photo" alt="Profile photo" hidden>
+        <button class="kyro-profile-edit" id="kyro-profile-edit" aria-label="Change profile photo"><svg class="icon"><use href="#i-edit"/></svg></button>
+      </div>
+      <h1 class="kyro-profile-name" id="kyro-profile-name" title="Tap to edit name">MR NITIN Kushwanshi</h1>
+    </section>
+
+    <h2 class="kyro-profile-section-title">My Kyro</h2>
+    <div class="kyro-profile-settings-list">
+      <button class="kyro-profile-setting-card" data-kyro-setting="appearance"><svg class="icon"><use href="#i-sun"/></svg><span><span class="label">Theme &amp; Appearance</span><small class="sub">Change theme and visual preferences</small></span><svg class="icon chev"><use href="#i-chevright"/></svg></button>
+      <button class="kyro-profile-setting-card" data-kyro-setting="language"><svg class="icon"><use href="#i-globe"/></svg><span><span class="label">Language</span><small class="sub">UI &amp; chat language</small></span><svg class="icon chev"><use href="#i-chevright"/></svg></button>
+      <button class="kyro-profile-setting-card" data-kyro-setting="api"><svg class="icon"><use href="#i-key"/></svg><span><span class="label">API Manager</span><small class="sub">Connect and manage your API</small></span><svg class="icon chev"><use href="#i-chevright"/></svg></button>
+      <button class="kyro-profile-setting-card" data-kyro-setting="models"><svg class="icon"><use href="#i-box"/></svg><span><span class="label">Model Manager</span><small class="sub">Favourites &amp; recents</small></span><svg class="icon chev"><use href="#i-chevright"/></svg></button>
+      <button class="kyro-profile-setting-card" data-kyro-setting="voice"><svg class="icon"><use href="#i-mic"/></svg><span><span class="label">Voice</span><small class="sub">Speech input &amp; output</small></span><svg class="icon chev"><use href="#i-chevright"/></svg></button>
+      <button class="kyro-profile-setting-card" data-kyro-setting="web"><svg class="icon"><use href="#i-globe"/></svg><span><span class="label">Web Search</span><small class="sub">Search the live web</small></span><svg class="icon chev"><use href="#i-chevright"/></svg></button>
+      <button class="kyro-profile-setting-card" data-kyro-setting="backup"><svg class="icon"><use href="#i-download"/></svg><span><span class="label">Backup</span><small class="sub">Export a .kyro file</small></span><svg class="icon chev"><use href="#i-chevright"/></svg></button>
+      <button class="kyro-profile-setting-card" data-kyro-setting="restore"><svg class="icon"><use href="#i-refresh"/></svg><span><span class="label">Restore</span><small class="sub">Import a .kyro file</small></span><svg class="icon chev"><use href="#i-chevright"/></svg></button>
+      <button class="kyro-profile-setting-card" data-kyro-setting="security"><svg class="icon"><use href="#i-lock"/></svg><span><span class="label">Security</span><small class="sub">App lock</small></span><svg class="icon chev"><use href="#i-chevright"/></svg></button>
+    </div>
+
+    <h2 class="kyro-profile-account-title">About &amp; Support</h2>
+    <div class="kyro-profile-settings-list">
+      <button class="kyro-profile-account-card" id="kyro-profile-about"><svg class="icon"><use href="#i-info"/></svg><span><span class="label">About KYRO</span><small class="sub">Version and app information</small></span><svg class="icon chev"><use href="#i-chevright"/></svg></button>
+      <button class="kyro-profile-account-card" id="kyro-profile-help"><svg class="icon"><use href="#i-help"/></svg><span><span class="label">Help &amp; Support</span><small class="sub">Get help with KYRO</small></span><svg class="icon chev"><use href="#i-chevright"/></svg></button>
+      <button class="kyro-profile-account-card" id="kyro-profile-logout"><svg class="icon kyro-profile-danger"><use href="#i-logout"/></svg><span><span class="label kyro-profile-danger">Logout</span><small class="sub">Sign out of this local profile</small></span></button>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- KYRO FINAL: exact compact three-dot reference popup + single reliable opener -->
+
+
+
+<!-- KYRO FINAL V54 ACTIONS + SHARED CHAT PATCH -->
+
+
+
+
+
+<!-- FINAL ABSOLUTE OVERRIDE: user requested 140 x 300 -->
+
+
+
+<!-- ============================================================
+     KYRO FINAL INTERACTION PATCH
+     1) Profile photo: delegated, capture-phase click so it cannot
+        be swallowed by older sidebar/profile handlers.
+     2) Recent/Pinned rows: plain text rows, click opens chat.
+     3) Long-press: opens a compact action menu with Open / Read / Pin.
+     ============================================================ -->
+
+
+
+<!-- KYRO FINAL PROFILE CLICK REPAIR: direct button binding + safe page mount -->
+
+
+
+
+
+<!-- KYRO IMAGE GENERATION -->
+<div class="kyro-image-gen-backdrop" id="kyro-image-gen-backdrop" hidden></div>
+<div class="kyro-image-gen-modal" id="kyro-image-gen-modal" aria-hidden="true">
+  <div class="kyro-image-gen-head">
+    <div>
+      <b>KYRO Image Gen</b>
+      <small>Generate images from text prompts</small>
+    </div>
+    <button class="kyro-image-gen-close" id="kyro-image-gen-close" style="background:none;border:none;color:var(--text-dim);font-size:22px;cursor:pointer;padding:4px 8px;line-height:1;">&times;</button>
+  </div>
+
+  <label class="kyro-image-gen-label" for="kyro-image-gen-prompt">Prompt</label>
+  <textarea id="kyro-image-gen-prompt" rows="5"
+    placeholder="Example: A premium cinematic portrait of a futuristic Indian city at sunset, ultra detailed..."></textarea>
+
+  <div class="kyro-image-gen-options">
+    <label>
+      <span>Aspect ratio</span>
+      <select id="kyro-image-gen-ratio">
+        <option value="1:1">1:1</option>
+        <option value="9:16" selected>9:16</option>
+        <option value="16:9">16:9</option>
+        <option value="4:3">4:3</option>
+        <option value="3:4">3:4</option>
+      </select>
+    </label>
+    <label>
+      <span>Quality</span>
+      <select id="kyro-image-gen-size">
+        <option value="1K" selected>1K</option>
+        <option value="2K">2K (newer image models)</option>
+        <option value="4K">4K (newer image models)</option>
+      </select>
+    </label>
+  </div>
+
+  <div class="kyro-image-gen-note">
+    <span>KYRO Image Gen uses the connected image model. Images generate at native resolution; aspect ratio is applied when supported.</span>
+  </div>
+
+  <button class="btn-primary" id="kyro-image-gen-create" style="width:100%;margin-top:14px;">Generate Image</button>
+  <div class="kyro-image-gen-status" id="kyro-image-gen-status" hidden></div>
+</div>
+
+
+
+
+
+<!-- ============================================================
+     KYRO CHAT EXPERIENCE PRO PATCH
+     - ChatGPT-like borderless user/AI messages
+     - Rich Markdown rendering: headings, bold, italic, lists,
+       blockquotes, code, links, tables, horizontal rules
+     - Smooth character/token streaming for Gemini replies
+     - Natural response-style instruction + emojis when useful
+     - Gemini image attachments are included in the chat request
+     ============================================================ -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ============================================================
+     KYRO IMAGE GEN CHAT FLOW PATCH
+     - Top Image Gen button keeps the prompt/options modal.
+     - Generate from the modal immediately moves the job into chat.
+     - Plus > Image Gen selects an Image Generation composer mode
+       instead of opening the modal.
+     - In Image Generation mode, Send directly generates the image
+       from the typed prompt and shows a live "Generating…" status
+       in the chat.
+     ============================================================ -->
+
+
+
+
+<!-- ============================================================
+     KYRO WORK MODES PATCH
+     Adds Deep Research + Scan/Analysis modes to the Plus sheet.
+     The mode indicator and live status text follow the selected tool.
+     ============================================================ -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- KYRO MESSAGE ACTIONS FINAL: user long-press Edit/Copy; AI Copy only -->
+
+
+
+
+
+<!-- KYRO COPY BUTTON GUARANTEE: always add Copy to completed AI replies -->
+
+
+
+
+<!-- KYRO FIRST-RUN ANDROID PERMISSION MANAGER -->
+
+
+
+
+
+
+
+
+<script src="app.js"></script>
+</body>
+</html>
+
+
+<!-- KYRO MODE COMPOSER CHIP / CHATGPT-LIKE SELECTED MODE UI -->
+
+
+
+
+
+
+
+<!-- KYRO USER MESSAGE COMPACT + LONG-PRESS EDIT/COPY FINAL OVERRIDE -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- KYRO FINAL PERSISTENT DEVICE LOGIN + REOPEN SPLASH PATCH -->
+
+
+
+
+
+<!-- KYRO FINAL USER MESSAGE ACTIONS REPAIR -->
+
+
