@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="hi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>KYRO — Details, Privacy & Authentication</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#050608;color:#eef2f7;line-height:1.65}
+.wrap{max-width:900px;margin:auto;padding:24px 16px 60px}.hero{padding:28px 20px;border:1px solid #252a32;border-radius:22px;background:#0b0e13;margin-bottom:18px}
+h1{margin:0 0 6px;font-size:30px}h2{font-size:21px;margin-top:28px;border-bottom:1px solid #252a32;padding-bottom:8px}h3{font-size:17px;margin-top:20px}
+.card{background:#0b0e13;border:1px solid #252a32;border-radius:16px;padding:16px;margin:12px 0}
+.badge{display:inline-block;padding:4px 9px;border-radius:999px;background:#18202a;border:1px solid #303946;font-size:12px;margin:3px}
+.muted{color:#aeb7c4}.ok{color:#8ee6ae}.warn{color:#ffd27d}
+ul{padding-left:22px}.meta{font-size:13px;color:#9da7b5}.footer{margin-top:30px;padding-top:18px;border-top:1px solid #252a32;color:#aeb7c4}
+a{color:#9cc8ff;text-decoration:none}a:hover{text-decoration:underline}
+</style>
+</head>
+<body>
+<div class="wrap">
+<section class="hero">
+  <div class="meta">OFFICIAL INFORMATION PAGE</div>
+  <h1>KYRO — Details, Privacy & Authentication</h1>
+  <p class="muted">KYRO — AI, Simplified.</p>
+  <span class="badge">Version 1.0.0</span>
+  <span class="badge">Build KYRO-2026.09.07</span>
+  <span class="badge">Established 2026</span>
+</section>
+
+<div class="card">
+<h2>1. KYRO क्या है?</h2>
+<p>KYRO एक mobile-first AI assistant / AI chat application है। इसमें chat, conversation history, attachments, local Library, voice input, read-aloud, Voice Mode, Web Search/research workflows, profile, themes, Settings, API Manager, Model Manager, Backup/Restore और Security controls उपलब्ध हो सकते हैं।</p>
+<p><b>Founder:</b> MR. NITIN KUSHWAHA.</p>
+</div>
+
+<div class="card">
+<h2>2. Google Login / Sign-In</h2>
+<p><span class="ok">✓ Google Sign-In मौजूद है।</span> Current app में Google authentication <b>Firebase Authentication</b> के जरिए implement किया गया है। Google account की authentication Firebase संभालता है; KYRO को आपका Google password नहीं मिलता।</p>
+<ul>
+<li>Google login के लिए Firebase का Google authentication provider इस्तेमाल होता है।</li>
+<li>पहली बार account chooser खुल सकता है; पहले से session होने पर login तेज हो सकता है।</li>
+<li>Firebase authentication session के कारण वापसी पर user को हर बार sign-in करना जरूरी नहीं हो सकता, जब तक logout/session clear न हो।</li>
+<li>Google login के बाद app email, display name और profile photo जैसी उपलब्ध account जानकारी को KYRO user record से जोड़ सकता है।</li>
+</ul>
+</div>
+
+<div class="card">
+<h2>3. Local Account Login</h2>
+<p>KYRO में local/demo account flow भी मौजूद है। Username और password browser/device के local storage में account record के रूप में रखे जा सकते हैं। Current described flow में password plain text में नहीं, SHA-256 hash के रूप में रखा जाता है।</p>
+<p>Browser/site data हटाने पर local account data भी हट सकता है।</p>
+</div>
+
+<div class="card">
+<h2>4. कौन-सा user data रखा जा सकता है?</h2>
+<ul>
+<li>Chat/conversation history</li>
+<li>Projects</li>
+<li>User name और profile information</li>
+<li>Profile photo</li>
+<li>Theme और app preferences</li>
+<li>Library / attachment state</li>
+<li>Authentication/session state</li>
+<li>App settings और अन्य supported state</li>
+</ul>
+<p>Current Firebase sync flow user state को Firebase Firestore के <code>users/{uid}</code> document से save/load कर सकता है। Google email, Google display name और Google photo भी user record के साथ save किए जा सकते हैं।</p>
+</div>
+
+<div class="card">
+<h2>5. Chat और AI Processing</h2>
+<p>जब connected AI feature enabled होता है, user द्वारा भेजा गया text answer बनाने के लिए configured AI service को भेजा जा सकता है। Demo/offline mode में local या scripted responses हो सकते हैं। कौन-सा service इस्तेमाल होगा यह deployment/configuration पर निर्भर करता है।</p>
+<p class="warn"><b>Important:</b> AI chat को पूरी तरह device-only/private मानकर confidential information भेजने से बचें, जब तक deployment की final privacy configuration इसकी पुष्टि न करे।</p>
+</div>
+
+<div class="card">
+<h2>6. Voice, Microphone और Voice Mode</h2>
+<ul>
+<li>Microphone तभी इस्तेमाल होना चाहिए जब user voice feature शुरू करे।</li>
+<li>Speech-to-text में audio transcription service को भेजा जा सकता है, configuration के अनुसार।</li>
+<li>Real-time Voice Mode live microphone audio को connected real-time service तक stream कर सकता है।</li>
+<li>KYRO को permanent microphone recording app के रूप में describe नहीं किया जाना चाहिए जब तक अलग recording feature enabled न हो।</li>
+</ul>
+</div>
+
+<div class="card">
+<h2>7. Photos, Files और Documents</h2>
+<p>User द्वारा चुनी गई photos, camera captures, files और documents conversation में attach किए जा सकते हैं और local Library में दिखाई दे सकते हैं। AI analysis की जरूरत होने पर selected content/prompt configured AI service को भेजा जा सकता है।</p>
+</div>
+
+<div class="card">
+<h2>8. Web Search / Research</h2>
+<p>Web Search या research workflow enabled होने पर search queries external web/search services तक जा सकती हैं। Returned information को AI answer तैयार करने के लिए process किया जा सकता है। Search results/citations third-party sources से आ सकते हैं।</p>
+</div>
+
+<div class="card">
+<h2>9. API Keys और Security</h2>
+<ul>
+<li>User-configured API keys current web build में browser/device state में रखी जा सकती हैं।</li>
+<li>Private API key को chat, GitHub या public post में कभी share न करें।</li>
+<li>Current backup implementation में API keys शामिल हो सकती हैं; exported <code>.kyro</code> backup को sensitive file मानें।</li>
+<li>App Lock/PIN device-local control है; इसे full encryption या unbreakable security न मानें।</li>
+<li>KYRO absolute/100% uncrackable security का दावा नहीं करता।</li>
+</ul>
+</div>
+
+<div class="card">
+<h2>10. Backup & Restore</h2>
+<p>KYRO का backup export chats, projects, profile/theme information और अन्य supported app data रख सकता है। Current implementation में configured API keys भी backup में आ सकती हैं। Backup file user के control में रहती है और export होने के बाद KYRO उसे अपने-आप protect या delete नहीं करता।</p>
+</div>
+
+<div class="card">
+<h2>11. Logout और Data Deletion</h2>
+<p>Logout connected authentication session को समाप्त कर सकता है। लेकिन local chats, files, API keys और अन्य device data को अलग clear-data/delete action की जरूरत हो सकती है। Exported backups logout के साथ automatically delete नहीं होते। Production deployment में account/data deletion process स्पष्ट रूप से उपलब्ध होना चाहिए।</p>
+</div>
+
+<div class="card">
+<h2>12. Third-Party Services</h2>
+<p>Deployment के अनुसार KYRO Google/Firebase authentication, connected AI services, search services और अन्य configured services के साथ interact कर सकता है। हर third-party service की अपनी privacy policy और terms होती हैं। Final production privacy policy में केवल वही providers सूचीबद्ध किए जाने चाहिए जो उस deployment में वास्तव में enabled हों।</p>
+</div>
+
+<div class="card">
+<h2>13. Children & Sensitive Information</h2>
+<p>Passwords, financial credentials, private API keys, government IDs या अन्य highly sensitive information को AI prompts/uploads में न भेजें, जब तक selected service और deployment specifically उस information को handle करने के लिए designed न हों।</p>
+</div>
+
+<div class="card">
+<h2>14. App Identity</h2>
+<ul>
+<li><b>Brand:</b> KYRO</li>
+<li><b>Tagline:</b> KYRO — AI, Simplified.</li>
+<li><b>Founder:</b> MR. NITIN KUSHWAHA</li>
+<li><b>Location shown in current public app information:</b> Kanpur, Uttar Pradesh, India</li>
+<li><b>Established:</b> 2026</li>
+<li><b>Visible models:</b> KYRO, KYRO 1, KYRO 2, KYRO Vision</li>
+<li><b>Public full form:</b> कोई public full-form specified नहीं है।</li>
+</ul>
+</div>
+
+<div class="card">
+<h2>15. Support / Official Channels</h2>
+<p><b>Instagram:</b> <a href="https://www.instagram.com/synapsebykyro" target="_blank" rel="noopener">@synapsebykyro</a></p>
+<p><b>YouTube:</b> <a href="https://www.youtube.com/@synapsebykyro" target="_blank" rel="noopener">@synapsebykyro</a></p>
+<p class="muted">Current app information में अलग public email, phone number या support portal specified नहीं है।</p>
+</div>
+
+<div class="card">
+<h2>16. Policy Changes</h2>
+<p>KYRO features, providers और data practices बदलने पर privacy policy update की जा सकती है। App में दिखाई गई latest policy उस deployment की current policy मानी जानी चाहिए।</p>
+</div>
+
+<div class="card">
+<h2>17. Production Security Checklist</h2>
+<ul>
+<li>Firebase Authentication में केवल required providers enable रखें।</li>
+<li>Firestore Security Rules में हर user को केवल अपने <code>users/{uid}</code> data तक access दें।</li>
+<li>Real API keys frontend/GitHub में न रखें; server-side environment variables में रखें।</li>
+<li>GitHub Pages पर backend secrets upload न करें।</li>
+<li>Privacy Policy में केवल वास्तव में enabled services/data flows लिखें।</li>
+<li>Account deletion और user-data deletion का वास्तविक server-side process रखें।</li>
+</ul>
+</div>
+
+<div class="footer">
+<p><b>Last reviewed:</b> 7 September 2026</p>
+<p>This page documents the current KYRO app implementation/information available in the supplied build. It is not a substitute for a jurisdiction-specific legal review.</p>
+</div>
+</div>
+</body>
+</html>
